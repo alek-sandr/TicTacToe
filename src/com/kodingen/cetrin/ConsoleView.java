@@ -35,9 +35,9 @@ public class ConsoleView extends View {
     private void showGameField(GameModel gm) {
         //StringBuilder sb = new StringBuilder("*** TicTacToe Game ***\n   0  1  2\n");
         StringBuilder sb = new StringBuilder();
-        sb.append(ansi().fg(Color.GREEN).a("* TicTacToe Game *").fg(Color.WHITE).a("\n   0  1  2\n"));
+        sb.append(ansi().fg(Color.GREEN).a("* TicTacToe Game *").fg(Color.WHITE).a("\n    0  1  2\n"));
         for (int x = 0; x < gm.getFieldSize(); x++) {
-            sb.append(x).append(' ');
+            sb.append(' ').append(x).append(' ');
             for (int y = 0; y < gm.getFieldSize(); y++) {
                 sb.append('[');
                 //sb.append(gm.getFieldCellChar(x, y));
@@ -50,6 +50,7 @@ public class ConsoleView extends View {
         AnsiConsole.systemInstall();
         System.out.println(sb.toString());
         AnsiConsole.systemUninstall();
+        System.out.println("q - to quit; u - to undo last move in game with computer\n");
     }
 
     private void processInput(GameModel gm) {
@@ -62,7 +63,12 @@ public class ConsoleView extends View {
                     System.exit(0);
                     break;
                 case 'u':
-                    gm.discardLastPlayerMove();
+                    if (gm.canDiscardLastPlayerMove()) {
+                        gm.discardLastPlayerMove();
+                    } else {
+                        System.out.println("You can't undo last move in game with real player or if there is no moves.");
+                        processInput(gm);
+                    }
                     break;
                 default:
                     System.out.println("Illegal input.\nTry again.");

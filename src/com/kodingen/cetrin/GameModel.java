@@ -13,10 +13,14 @@ public class GameModel extends BaseModel {
     private final Player oPlayer;
     private Player currentPlayer;
     private Player winner;
+    private boolean canUndo = false;
 
     public GameModel(Player xPlayer, Player oPlayer) {
         this.xPlayer = xPlayer;
         this.oPlayer = oPlayer;
+        if (oPlayer.getClass() == ComputerPlayer.class) {
+            canUndo = true;
+        }
         currentPlayer = xPlayer;
     }
 
@@ -138,8 +142,11 @@ public class GameModel extends BaseModel {
         return FIELD_SIZE;
     }
 
+    public boolean canDiscardLastPlayerMove() {
+        return turnsCount() >= 2 && canUndo;
+    }
     public void discardLastPlayerMove() {
-        if (turnsCount() >= 2) {
+        if (canDiscardLastPlayerMove()) {
             Turn t = turns.remove(turnsCount() - 1);
             gameField[t.getX()][t.getY()] = EMPTY;
             t = turns.remove(turnsCount() - 1);
