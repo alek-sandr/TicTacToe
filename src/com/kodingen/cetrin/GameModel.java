@@ -138,7 +138,7 @@ public class GameModel extends BaseModel {
         return FIELD_SIZE;
     }
 
-    public void discardLastTwoMoves() {
+    public void discardLastPlayerMove() {
         if (turnsCount() >= 2) {
             Turn t = turns.remove(turnsCount() - 1);
             gameField[t.getX()][t.getY()] = EMPTY;

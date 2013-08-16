@@ -62,7 +62,7 @@ public class ConsoleView extends View {
                     System.exit(0);
                     break;
                 case 'u':
-                    gm.discardLastTwoMoves();
+                    gm.discardLastPlayerMove();
                     break;
                 default:
                     System.out.println("Illegal input.\nTry again.");
