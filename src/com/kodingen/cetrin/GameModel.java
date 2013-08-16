@@ -13,7 +13,6 @@ public class GameModel extends BaseModel {
     private final Player oPlayer;
     private Player currentPlayer;
     private Player winner;
-    private int turnsLeft = FIELD_SIZE * FIELD_SIZE;
 
     public GameModel(Player xPlayer, Player oPlayer) {
         this.xPlayer = xPlayer;
@@ -34,7 +33,7 @@ public class GameModel extends BaseModel {
     }
 
     public String makeTurn(int x, int y) {
-        assert turnsLeft > 0;
+        assert turns.size() < FIELD_SIZE * FIELD_SIZE;
         if (x < 0 || x >= FIELD_SIZE || y < 0 || y >= FIELD_SIZE) {
             return "Entered coordinates out of range. Try again.";
         }
@@ -43,7 +42,6 @@ public class GameModel extends BaseModel {
         }
         gameField[x][y] = getCurrentPlayer().getSymbolCode();
         turns.add(new Turn(x, y));
-        turnsLeft--;
         checkWinner();
         currentPlayer = currentPlayer == xPlayer ? oPlayer : xPlayer;
         notifySubscribers();
@@ -119,7 +117,7 @@ public class GameModel extends BaseModel {
     }
 
     public boolean hasMoreTurns() {
-        return turnsLeft > 0;
+        return turns.size() < FIELD_SIZE * FIELD_SIZE;
     }
 
     public int getFieldCell(int x, int y) {
@@ -142,8 +140,11 @@ public class GameModel extends BaseModel {
 
     public void discardLastTwoMoves() {
         if (turnsCount() >= 2) {
-            turns.remove(turnsCount() - 1);
-            turns.remove(turnsCount() - 1);
+            Turn t = turns.remove(turnsCount() - 1);
+            gameField[t.getX()][t.getY()] = EMPTY;
+            t = turns.remove(turnsCount() - 1);
+            gameField[t.getX()][t.getY()] = EMPTY;
+            notifySubscribers();
         }
     }
 
