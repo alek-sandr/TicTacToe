@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TicTacToe.iws" />
@@ -25,7 +24,7 @@
     <file path="/NetworkPlayer.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376301639664" ignored="false" />
     <file path="/TicTacToe.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376301724398" ignored="false" />
     <file path="/fragment.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376317761073" ignored="false" />
-    <file path="/Dummy.txt" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376656168906" ignored="false" />
+    <file path="/Dummy.txt" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376656682633" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -462,7 +461,11 @@
       <created>1376656171890</created>
       <updated>1376656171890</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix discardLastTwoMoves()  function to GameModel.">
+      <created>1376656693852</created>
+      <updated>1376656693852</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -555,7 +558,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added one char command processing from real player. Added discardLastTwoMoves()  function to GameModel." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix discardLastTwoMoves()  function to GameModel." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -571,6 +574,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Added one char command processing from real player" />
     <MESSAGE value="Added one char command processing from real player. Added discardLastTwoMoves()  function to GameModel." />
+    <MESSAGE value="Fix discardLastTwoMoves()  function to GameModel." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
