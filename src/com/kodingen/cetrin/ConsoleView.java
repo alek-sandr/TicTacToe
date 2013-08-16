@@ -37,7 +37,7 @@ public class ConsoleView extends View {
         StringBuilder sb = new StringBuilder();
         sb.append(ansi().fg(Color.GREEN).a("* TicTacToe Game *").fg(Color.WHITE).a("\n   0  1  2\n"));
         for (int x = 0; x < gm.getFieldSize(); x++) {
-            sb.append(x + " ");
+            sb.append(x).append(' ');
             for (int y = 0; y < gm.getFieldSize(); y++) {
                 sb.append('[');
                 //sb.append(gm.getFieldCellChar(x, y));
@@ -55,20 +55,34 @@ public class ConsoleView extends View {
     private void processInput(GameModel gm) {
         System.out.print("Player " + gm.getCurrentPlayer().getSymbol() + " turn (row column): ");
         String[] input = in.nextLine().trim().split(" ");
-        int x, y;
-        try {
-            x = Integer.parseInt(input[0]);
-            y = Integer.parseInt(input[1]);
-            String message;
-            while ((message = gm.makeTurn(x, y)) != null) {
-                System.out.println(message);
+        if (input.length == 1) {
+            switch (input[0].charAt(0)) {
+                case 'q':
+                    gm.unsubscribe(this);
+                    System.exit(0);
+                    break;
+                case 'u':
+                    gm.discardLastTwoMoves();
+                    break;
+                default:
+                    System.out.println("Illegal input.\nTry again.");
+                    processInput(gm);
+            }
+        } else if (input.length == 2) {
+            int x, y;
+            try {
+                x = Integer.parseInt(input[0]);
+                y = Integer.parseInt(input[1]);
+                String message;
+                while ((message = gm.makeTurn(x, y)) != null) {
+                    System.out.println(message);
+                    processInput(gm);
+                }
+            } catch (NumberFormatException nfe) {
+                System.out.println("Illegal input.\nTry again.");
                 processInput(gm);
             }
-        } catch (NumberFormatException nfe) {
-            System.out.println("Illegal input.\nTry again.");
-            processInput(gm);
         }
-
     }
 
     public void start() {
@@ -100,6 +114,7 @@ public class ConsoleView extends View {
         GameModel gm = new GameModel(xPlayer, oPlayer);
         gm.subscribe(this);
     }
+
     private void clearConsole() {
         try {
             String os = System.getProperty("os.name");

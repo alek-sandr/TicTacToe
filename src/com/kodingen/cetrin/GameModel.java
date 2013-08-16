@@ -140,6 +140,13 @@ public class GameModel extends BaseModel {
         return FIELD_SIZE;
     }
 
+    public void discardLastTwoMoves() {
+        if (turnsCount() >= 2) {
+            turns.remove(turnsCount() - 1);
+            turns.remove(turnsCount() - 1);
+        }
+    }
+
     static class Turn {
         private int x, y;
 
@@ -171,4 +178,5 @@ public class GameModel extends BaseModel {
                     (x == FIELD_SIZE / 2 && y == FIELD_SIZE - 1);
         }
     }
+
 }
