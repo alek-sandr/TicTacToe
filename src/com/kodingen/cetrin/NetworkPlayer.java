@@ -1,17 +1,69 @@
 package com.kodingen.cetrin;
 
-public class NetworkPlayer extends Player {
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-    public NetworkPlayer(int symbol) {
-        this(symbol, false);
-    }
+public class NetworkPlayer extends Player {
+    public static final int SERVER = 0;
+    public static final int CLIENT = 1;
+    public static final int PORT = 8001;
+
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
+    private boolean firstTurn = false;
+    private volatile Socket s;
 
     private NetworkPlayer(int symbol, boolean showInputForm) {
         super(symbol, showInputForm);
     }
 
+    public NetworkPlayer(int symbol, int type, String addr) throws IOException {
+        this(symbol, false);
+        switch (type) {
+            case SERVER:
+                ServerSocket listener = new ServerSocket(PORT);
+                s = listener.accept();
+                in = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
+                out = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
+                out.flush();
+                break;
+            case CLIENT:
+                firstTurn = true;
+                s = new Socket(addr, PORT);
+                out = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
+                out.flush();
+                in = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
+                break;
+            default:
+                throw new IllegalArgumentException("Wrong game mode!");
+        }
+    }
+
+    private void send(Message data) throws IOException {
+        out.writeObject(data);
+        out.flush();
+    }
+
+
     @Override
-    public void makeTurn(GameModel model) {
-        //TODO: implement network game
+    public void makeTurn() throws IOException {
+        try {
+            if (!firstTurn) {
+                send(new Message(Message.NEW_TURN, gm.getLastTurn().getX(), gm.getLastTurn().getY()));
+            } else {
+                firstTurn = false;
+            }
+            if (gm.hasWinner()) return;
+            Message data = (Message) in.readObject();
+            switch (data.getCode()) {
+                case Message.NEW_TURN:
+                    gm.makeTurn(data.getX(), data.getY());
+            }
+        } catch (IOException e) {
+            throw new IOException("Connection lost.");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.kodingen.cetrin;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public class GameModel extends BaseModel {
     public GameModel(Player xPlayer, Player oPlayer) {
         this.xPlayer = xPlayer;
         this.oPlayer = oPlayer;
+        this.xPlayer.setGameModel(this);
+        this.oPlayer.setGameModel(this);
         if (oPlayer.getClass() == ComputerPlayer.class) {
             canUndo = true;
         }
@@ -49,9 +52,6 @@ public class GameModel extends BaseModel {
         checkWinner();
         currentPlayer = currentPlayer == xPlayer ? oPlayer : xPlayer;
         notifySubscribers();
-        if (getWinner() == null) {
-            currentPlayer.makeTurn(this); // next player turn
-        }
         return null;
     }
 
@@ -120,6 +120,10 @@ public class GameModel extends BaseModel {
         return winner;
     }
 
+    public boolean hasWinner() {
+        return winner != null;
+    }
+
     public boolean hasMoreTurns() {
         return turns.size() < FIELD_SIZE * FIELD_SIZE;
     }
@@ -155,7 +159,7 @@ public class GameModel extends BaseModel {
         }
     }
 
-    static class Turn {
+    static class Turn implements Serializable {
         private int x, y;
 
         Turn(int x, int y) {

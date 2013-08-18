@@ -11,33 +11,33 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public void makeTurn(GameModel gm) {
-        if (gm.getWinner() != null) return;
+    public void makeTurn() {
+        if (gm.hasWinner()) return;
         if (!gm.hasMoreTurns()) return;
         // if we can immediately win we do it
-        if (tryWin(gm)) return;
+        if (tryWin()) return;
         // or try prevent other player to win
-        if (tryPreventOtherWin(gm)) return;
+        if (tryPreventOtherWin()) return;
 
         // Если крестики сделали первый ход в центр, до конца игры ходить в любой угол,
         // а если это невозможно — в любую клетку
         if (gm.getTurn(0).isCenterTurn()) {
-            if (tryCorners(gm)) return;
-            if (tryAnyEmptyPosition(gm)) return;
+            if (tryCorners()) return;
+            if (tryAnyEmptyPosition()) return;
         }
         // Если крестики сделали первый ход в угол, ответить ходом в центр.
         // Следующим ходом занять угол, противоположный первому ходу крестиков, а если это невозможно — пойти на сторону.
         if (gm.getTurn(0).isCornerTurn()) {
-            if (tryCenter(gm)) return;
+            if (tryCenter()) return;
             if (gm.turnsCount() == 3) {
                 if (tryOppositeCorner(gm.getTurn(0), gm)) return;
-                if (trySides(gm)) return;
+                if (trySides()) return;
             }
         }
 
         if (gm.turnsCount() <= 3 && gm.getTurn(0).isSideTurn()) {
             // Если крестики сделали первый ход на сторону, ответить ходом в центр
-            if (tryCenter(gm)) return;
+            if (tryCenter()) return;
             // Если следующий ход крестиков — в угол, занять противоположный угол
             if (gm.turnsCount() == 3 && gm.getTurn(2).isCornerTurn()) {
                 if (tryOppositeCorner(gm.getTurn(2), gm)) return;
@@ -46,7 +46,7 @@ public class ComputerPlayer extends Player {
             if (gm.turnsCount() == 3) {
                 if (Math.abs(gm.getLastTurn().getX() - gm.getFieldSize() + 1) == gm.getTurn(0).getX() &&
                         Math.abs(gm.getLastTurn().getY() - gm.getFieldSize() + 1) == gm.getTurn(0).getY()) {
-                    if (tryCorners(gm)) return;
+                    if (tryCorners()) return;
                 }
             }
             // Если следующий ход крестиков — на сторону рядом с их первым ходом,
@@ -64,23 +64,23 @@ public class ComputerPlayer extends Player {
                 } else if (gm.getLastTurn().getY() == 0 || gm.getLastTurn().getY() == gm.getFieldSize() - 1) {
                     y = gm.getLastTurn().getY();
                 }
-                if (tryCell(x, y, gm)) return;
+                if (tryCell(x, y)) return;
             }
         }
 
         // go to any empty position
-        tryAnyEmptyPosition(gm);
+        tryAnyEmptyPosition();
     }
 
-    private boolean tryWin(GameModel gm) {
+    private boolean tryWin() {
         for (int i = 0; i < gm.getFieldSize(); i++) {
-            if (checkHorizontalLineForWin(i, gm)) return true;
-            if (checkVerticalLineForWin(i, gm)) return true;
+            if (checkHorizontalLineForWin(i)) return true;
+            if (checkVerticalLineForWin(i)) return true;
         }
-        return checkDiagonalsForWin(gm);
+        return checkDiagonalsForWin();
     }
 
-    private boolean checkHorizontalLineForWin(int row, GameModel gm) {
+    private boolean checkHorizontalLineForWin(int row) {
         int myCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -97,7 +97,7 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean checkVerticalLineForWin(int column, GameModel gm) {
+    private boolean checkVerticalLineForWin(int column) {
         int myCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -114,7 +114,7 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean checkDiagonalsForWin(GameModel gm) {
+    private boolean checkDiagonalsForWin() {
         int myCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -144,15 +144,15 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean tryPreventOtherWin(GameModel gm) {
+    private boolean tryPreventOtherWin() {
         for (int i = 0; i < gm.getFieldSize(); i++) {
-            if (checkHorizontalLineForPrevent(i, gm)) return true;
-            if (checkVerticalLineForPrevent(i, gm)) return true;
+            if (checkHorizontalLineForPrevent(i)) return true;
+            if (checkVerticalLineForPrevent(i)) return true;
         }
-        return checkDiagonalsForPrevent(gm);
+        return checkDiagonalsForPrevent();
     }
 
-    private boolean checkHorizontalLineForPrevent(int row, GameModel gm) {
+    private boolean checkHorizontalLineForPrevent(int row) {
         int oppositeCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -169,7 +169,7 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean checkVerticalLineForPrevent(int column, GameModel gm) {
+    private boolean checkVerticalLineForPrevent(int column) {
         int oppositeCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -186,7 +186,7 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean checkDiagonalsForPrevent(GameModel gm) {
+    private boolean checkDiagonalsForPrevent() {
         int oppositeCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -216,7 +216,7 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean tryCenter(GameModel gm) {
+    private boolean tryCenter() {
         int centerPosition = gm.getFieldSize() / 2;
         if (gm.getFieldCell(centerPosition, centerPosition) == 0) {
             gm.makeTurn(centerPosition, centerPosition);
@@ -228,40 +228,40 @@ public class ComputerPlayer extends Player {
     private boolean tryOppositeCorner(GameModel.Turn turn, GameModel gm) {
         if (turn.isCornerTurn()) {
             if (tryCell(Math.abs(turn.getX() - gm.getFieldSize() + 1),
-                    Math.abs(turn.getY() - gm.getFieldSize() + 1), gm)) {
+                    Math.abs(turn.getY() - gm.getFieldSize() + 1))) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean tryCorners(GameModel gm) {
-        if (tryCell(0, 0, gm)) {
+    private boolean tryCorners() {
+        if (tryCell(0, 0)) {
             return true;
         }
-        if (tryCell(0, gm.getFieldSize() - 1, gm)) {
+        if (tryCell(0, gm.getFieldSize() - 1)) {
             return true;
         }
-        if (tryCell(gm.getFieldSize() - 1, 0, gm)) {
+        if (tryCell(gm.getFieldSize() - 1, 0)) {
             return true;
         }
-        return tryCell(gm.getFieldSize() - 1, gm.getFieldSize() - 1, gm);
+        return tryCell(gm.getFieldSize() - 1, gm.getFieldSize() - 1);
     }
 
-    private boolean trySides(GameModel gm) {
-        if (tryCell(gm.getFieldSize() / 2, 0, gm)) {
+    private boolean trySides() {
+        if (tryCell(gm.getFieldSize() / 2, 0)) {
             return true;
         }
-        if (tryCell(gm.getFieldSize() - 1, gm.getFieldSize() / 2, gm)) {
+        if (tryCell(gm.getFieldSize() - 1, gm.getFieldSize() / 2)) {
             return true;
         }
-        if (tryCell(0, gm.getFieldSize() / 2, gm)) {
+        if (tryCell(0, gm.getFieldSize() / 2)) {
             return true;
         }
-        return tryCell(gm.getFieldSize() / 2, gm.getFieldSize() - 1, gm);
+        return tryCell(gm.getFieldSize() / 2, gm.getFieldSize() - 1);
     }
 
-    private boolean tryCell(int x, int y, GameModel gm) {
+    private boolean tryCell(int x, int y) {
         if (gm.getFieldCell(x, y) == 0) {
             gm.makeTurn(x, y);
             return true;
@@ -269,7 +269,7 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    private boolean tryAnyEmptyPosition(GameModel gm) {
+    private boolean tryAnyEmptyPosition() {
         for (int x = 0; x < gm.getFieldSize(); x++) {
             for (int y = 0; y < gm.getFieldSize(); y++) {
                 if (gm.getFieldCell(x, y) == 0) {

@@ -11,7 +11,7 @@ public class RealPlayer extends Player {
     }
 
     @Override
-    public void makeTurn(GameModel model) {
+    public void makeTurn() {
         // do nothing. player enter data to view
     }
 }

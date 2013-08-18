@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class ConsoleView extends View {
     public static final String ANSI_CLS = "\u001b[2J";
     public static final String ANSI_HOME = "\u001b[H";
+
+    private GameModel gm;
     private Scanner in;
 
     public ConsoleView() {
@@ -18,8 +20,8 @@ public class ConsoleView extends View {
 
     public void modelChanged(BaseModel model) {
         clearConsole();
-        GameModel gm = (GameModel) model;
-        showGameField(gm);
+        gm = (GameModel) model;
+        showGameField();
         if (gm.getWinner() != null) {
             System.out.println("Congratulations to Player " + gm.getWinner().getSymbol() + "!");
             return;
@@ -28,11 +30,18 @@ public class ConsoleView extends View {
             return;
         }
         if (gm.getCurrentPlayer().showInputForm()) {
-            processInput(gm);
+            processInput();
+        } else {
+            System.out.println("Waiting for Player " + gm.getCurrentPlayer().getSymbol() + " turn...");
+            try {
+                gm.getCurrentPlayer().makeTurn();
+            } catch (IOException e) {
+                showMessageAndExit(e.getMessage());
+            }
         }
     }
 
-    private void showGameField(GameModel gm) {
+    private void showGameField() {
         //StringBuilder sb = new StringBuilder("*** TicTacToe Game ***\n   0  1  2\n");
         StringBuilder sb = new StringBuilder();
         sb.append(ansi().fg(Color.GREEN).a("* TicTacToe Game *").fg(Color.WHITE).a("\n    0  1  2\n"));
@@ -53,7 +62,7 @@ public class ConsoleView extends View {
         System.out.println("q - to quit; u - to undo last move in game with computer\n");
     }
 
-    private void processInput(GameModel gm) {
+    private void processInput() {
         System.out.print("Player " + gm.getCurrentPlayer().getSymbol() + " turn (row column): ");
         String[] input = in.nextLine().trim().split(" ");
         if (input.length == 1) {
@@ -67,12 +76,12 @@ public class ConsoleView extends View {
                         gm.discardLastPlayerMove();
                     } else {
                         System.out.println("You can't undo last move in game with real player or if there is no moves.");
-                        processInput(gm);
+                        processInput();
                     }
                     break;
                 default:
                     System.out.println("Illegal input.\nTry again.");
-                    processInput(gm);
+                    processInput();
             }
         } else if (input.length == 2) {
             int x, y;
@@ -82,11 +91,11 @@ public class ConsoleView extends View {
                 String message;
                 while ((message = gm.makeTurn(x, y)) != null) {
                     System.out.println(message);
-                    processInput(gm);
+                    processInput();
                 }
             } catch (NumberFormatException nfe) {
                 System.out.println("Illegal input.\nTry again.");
-                processInput(gm);
+                processInput();
             }
         }
     }
@@ -95,30 +104,57 @@ public class ConsoleView extends View {
         System.out.println("Starting new game.\nSelect game type.");
         System.out.println("1) Real player - Real player");
         System.out.println("2) Real player - Computer");
-        System.out.println("3) Real player - Network player");
+        System.out.println("3) Create network game");
+        System.out.println("4) Connect to network game");
         System.out.print("Enter game type: ");
         int gameTypeCode = in.nextInt();
         in.nextLine(); //read next line symbol
-        while (gameTypeCode < 1 || gameTypeCode > 3) {
+        while (gameTypeCode < 1 || gameTypeCode > 4) {
             System.out.println("Wrong input. Try again: ");
             gameTypeCode = in.nextInt();
         }
-        Player xPlayer = new RealPlayer(GameModel.X);
+        Player xPlayer = null;
         Player oPlayer = null;
         switch (gameTypeCode) {
             case 1:
+                xPlayer = new RealPlayer(GameModel.X);
                 oPlayer = new RealPlayer(GameModel.O);
                 break;
             case 2:
+                xPlayer = new RealPlayer(GameModel.X);
                 oPlayer = new ComputerPlayer();
                 break;
             case 3:
-                //oPlayer = new NetworkPlayer(GameModel.O);
-                System.out.println("Not implemented yet");
+                xPlayer = new RealPlayer(GameModel.X);
+                try {
+                    System.out.println("Waiting for connection...");
+                    oPlayer = new NetworkPlayer(GameModel.O, NetworkPlayer.SERVER, null);
+                    System.out.println("Connection accepted.");
+                } catch (IOException e) {
+                    showMessageAndExit("Unable to start server.");
+                }
+                break;
+            case 4:
+                oPlayer = new RealPlayer(GameModel.O);
+                System.out.println("Enter server address:");
+                String addr = in.nextLine();
+                try {
+                    System.out.println("Trying to connect to " + addr);
+                    xPlayer = new NetworkPlayer(GameModel.X, NetworkPlayer.CLIENT, addr);
+                    System.out.println("Connection established.");
+                } catch (IOException e) {
+                    showMessageAndExit("Unable connect to server.");
+                }
                 break;
         }
         GameModel gm = new GameModel(xPlayer, oPlayer);
         gm.subscribe(this);
+
+    }
+
+    private void showMessageAndExit(String msg) {
+        System.out.println(msg + " Exiting...");
+        System.exit(0);
     }
 
     private void clearConsole() {
