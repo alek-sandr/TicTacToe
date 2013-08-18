@@ -39,20 +39,18 @@ public class GameModel extends BaseModel {
         return oPlayer;
     }
 
-    public String makeTurn(int x, int y) {
+    public boolean isTurnAvailable(int x, int y) {
+        return x >= 0 && x < FIELD_SIZE && y >= 0 && y < FIELD_SIZE && gameField[x][y] == EMPTY;
+    }
+
+    public void makeTurn(int x, int y) {
         assert turns.size() < FIELD_SIZE * FIELD_SIZE;
-        if (x < 0 || x >= FIELD_SIZE || y < 0 || y >= FIELD_SIZE) {
-            return "Entered coordinates out of range. Try again.";
-        }
-        if (gameField[x][y] != EMPTY) {
-            return "Selected position not empty. Try again.";
-        }
+
         gameField[x][y] = getCurrentPlayer().getSymbolCode();
         turns.add(new Turn(x, y));
         checkWinner();
         currentPlayer = currentPlayer == xPlayer ? oPlayer : xPlayer;
         notifySubscribers();
-        return null;
     }
 
     int turnsCount() {
@@ -64,9 +62,6 @@ public class GameModel extends BaseModel {
     }
 
     Turn getTurn(int index) {
-        if (index < 0 || index >= turns.size()) {
-            throw new IllegalArgumentException();
-        }
         return turns.get(index);
     }
 
@@ -129,7 +124,6 @@ public class GameModel extends BaseModel {
     }
 
     public int getFieldCell(int x, int y) {
-        assert x >= 0 && x < FIELD_SIZE && y >=0 && y < FIELD_SIZE;
         return gameField[x][y];
     }
 
@@ -149,6 +143,7 @@ public class GameModel extends BaseModel {
     public boolean canDiscardLastPlayerMove() {
         return turnsCount() >= 2 && canUndo;
     }
+
     public void discardLastPlayerMove() {
         if (canDiscardLastPlayerMove()) {
             Turn t = turns.remove(turnsCount() - 1);

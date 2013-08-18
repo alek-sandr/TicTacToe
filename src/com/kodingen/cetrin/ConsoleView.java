@@ -30,7 +30,9 @@ public class ConsoleView extends View {
             return;
         }
         if (gm.getCurrentPlayer().showInputForm()) {
-            processInput();
+            while (processInput() == false) {
+                System.out.println("Try again.");
+            }
         } else {
             System.out.println("Waiting for Player " + gm.getCurrentPlayer().getSymbol() + " turn...");
             try {
@@ -62,41 +64,54 @@ public class ConsoleView extends View {
         System.out.println("q - to quit; u - to undo last move in game with computer\n");
     }
 
-    private void processInput() {
+    private boolean processInput() {
         System.out.print("Player " + gm.getCurrentPlayer().getSymbol() + " turn (row column): ");
         String[] input = in.nextLine().trim().split(" ");
-        if (input.length == 1) {
-            switch (input[0].charAt(0)) {
-                case 'q':
-                    gm.unsubscribe(this);
-                    System.exit(0);
-                    break;
-                case 'u':
-                    if (gm.canDiscardLastPlayerMove()) {
-                        gm.discardLastPlayerMove();
-                    } else {
-                        System.out.println("You can't undo last move in game with real player or if there is no moves.");
-                        processInput();
-                    }
-                    break;
-                default:
-                    System.out.println("Illegal input.\nTry again.");
-                    processInput();
+        switch (input.length) {
+            case 1:
+                return processCommand(input[0]);
+            case 2:
+                return processCoordinates(input);
+            default:
+                return false;
+        }
+    }
+
+    private boolean processCommand(String command) {
+        if (command.equalsIgnoreCase("q")) {
+            gm.unsubscribe(this);
+            System.exit(0);
+        }
+        if (command.equalsIgnoreCase("u")) {
+            if (gm.canDiscardLastPlayerMove()) {
+                gm.discardLastPlayerMove();
+                return true;
+            } else {
+                System.out.println("You can't undo last move in game with real player or if there is no moves.");
+                return false;
             }
-        } else if (input.length == 2) {
-            int x, y;
-            try {
-                x = Integer.parseInt(input[0]);
-                y = Integer.parseInt(input[1]);
-                String message;
-                while ((message = gm.makeTurn(x, y)) != null) {
-                    System.out.println(message);
-                    processInput();
-                }
-            } catch (NumberFormatException nfe) {
-                System.out.println("Illegal input.\nTry again.");
-                processInput();
+        }
+        System.out.println("No such command.");
+        return false;
+    }
+
+    private boolean processCoordinates(String[] input) {
+        assert input.length == 2;
+
+        int x, y;
+        try {
+            x = Integer.parseInt(input[0]);
+            y = Integer.parseInt(input[1]);
+            if (gm.isTurnAvailable(x, y)) {
+                gm.makeTurn(x, y);
+                return true;
+            } else {
+                System.out.println("Wrong coordinates or this cell already occupied.");
+                return false;
             }
+        } catch (NumberFormatException nfe) {
+            System.out.println("Entered coordinates are not integer numbers.");
+            return false;
         }
     }
 
