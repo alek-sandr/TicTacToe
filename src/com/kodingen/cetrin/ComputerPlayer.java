@@ -11,7 +11,7 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public void makeTurn() {
+    public void makeMove() {
         if (gm.hasWinner()) return;
         if (!gm.hasMoreTurns()) return;
         // if we can immediately win we do it
@@ -91,7 +91,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(emptyCellNumber, row);
+            gm.makeMove(emptyCellNumber, row);
             return true;
         }
         return false;
@@ -108,7 +108,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(column, emptyCellNumber);
+            gm.makeMove(column, emptyCellNumber);
             return true;
         }
         return false;
@@ -125,7 +125,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(emptyCellNumber, emptyCellNumber);
+            gm.makeMove(emptyCellNumber, emptyCellNumber);
             return true;
         }
         myCellsCount = 0;
@@ -138,7 +138,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
+            gm.makeMove(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
             return true;
         }
         return false;
@@ -163,7 +163,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(emptyCellNumber, row);
+            gm.makeMove(emptyCellNumber, row);
             return true;
         }
         return false;
@@ -180,7 +180,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(column, emptyCellNumber);
+            gm.makeMove(column, emptyCellNumber);
             return true;
         }
         return false;
@@ -197,7 +197,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(emptyCellNumber, emptyCellNumber);
+            gm.makeMove(emptyCellNumber, emptyCellNumber);
             return true;
         }
         oppositeCellsCount = 0;
@@ -210,7 +210,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeTurn(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
+            gm.makeMove(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
             return true;
         }
         return false;
@@ -219,7 +219,7 @@ public class ComputerPlayer extends Player {
     private boolean tryCenter() {
         int centerPosition = gm.getFieldSize() / 2;
         if (gm.getFieldCell(centerPosition, centerPosition) == 0) {
-            gm.makeTurn(centerPosition, centerPosition);
+            gm.makeMove(centerPosition, centerPosition);
             return true;
         }
         return false;
@@ -263,7 +263,7 @@ public class ComputerPlayer extends Player {
 
     private boolean tryCell(int x, int y) {
         if (gm.getFieldCell(x, y) == 0) {
-            gm.makeTurn(x, y);
+            gm.makeMove(x, y);
             return true;
         }
         return false;
@@ -273,7 +273,7 @@ public class ComputerPlayer extends Player {
         for (int x = 0; x < gm.getFieldSize(); x++) {
             for (int y = 0; y < gm.getFieldSize(); y++) {
                 if (gm.getFieldCell(x, y) == 0) {
-                    gm.makeTurn(x, y);
+                    gm.makeMove(x, y);
                     return true;
                 }
             }

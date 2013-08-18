@@ -15,6 +15,7 @@ public abstract class Player {
     public void setGameModel(GameModel gm) {
         this.gm = gm;
     }
+
     public int getSymbolCode() {
         return symbol;
     }
@@ -23,7 +24,7 @@ public abstract class Player {
         return symbol == GameModel.X ? 'X' : 'O';
     }
 
-    public abstract void makeTurn() throws IOException;
+    public abstract void makeMove() throws IOException;
 
     public boolean showInputForm() {
         return showInput;

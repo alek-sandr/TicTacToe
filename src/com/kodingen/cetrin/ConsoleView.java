@@ -36,7 +36,7 @@ public class ConsoleView extends View {
         } else {
             System.out.println("Waiting for Player " + gm.getCurrentPlayer().getSymbol() + " turn...");
             try {
-                gm.getCurrentPlayer().makeTurn();
+                gm.getCurrentPlayer().makeMove();
             } catch (IOException e) {
                 showMessageAndExit(e.getMessage());
             }
@@ -103,7 +103,7 @@ public class ConsoleView extends View {
             x = Integer.parseInt(input[0]);
             y = Integer.parseInt(input[1]);
             if (gm.isTurnAvailable(x, y)) {
-                gm.makeTurn(x, y);
+                gm.makeMove(x, y);
                 return true;
             } else {
                 System.out.println("Wrong coordinates or this cell already occupied.");

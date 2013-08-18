@@ -7,26 +7,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/ComputerPlayer.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/ComputerPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/NetworkPlayer.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/NetworkPlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/Player.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/RealPlayer.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/RealPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TicTacToe.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/IModelSubscriber.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1375944962168" ignored="false" />
-    <file path="/GameModel.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376843596896" ignored="false" />
+    <file path="/GameModel.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376849184047" ignored="false" />
     <file path="/View.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376294255403" ignored="false" />
     <file path="/ConsoleView.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376843857434" ignored="false" />
     <file path="/IPlayerInteractable.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1375959618203" ignored="false" />
     <file path="/BaseModel.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1375964086503" ignored="false" />
-    <file path="/Player.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376822388904" ignored="false" />
+    <file path="/Player.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376848513465" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/jdkAnnotations.jar!/java/awt/event/annotations.xml" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376292050900" ignored="false" />
     <file path="/RealPlayer.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376301403667" ignored="false" />
     <file path="/ComputerPlayer.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376827741935" ignored="false" />
-    <file path="/NetworkPlayer.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376831305776" ignored="false" />
+    <file path="/NetworkPlayer.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376848939608" ignored="false" />
     <file path="/TicTacToe.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376301724398" ignored="false" />
     <file path="/fragment.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376317761073" ignored="false" />
-    <file path="/Dummy.txt" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376843807800" ignored="false" />
+    <file path="/Dummy.txt" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376849292965" ignored="false" />
+    <file path="/Message.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1376848859716" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +84,25 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <method_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java" line="41" class="com.kodingen.cetrin.GameModel" package="com.kodingen.cetrin">
+        <option name="WATCH_ENTRY" value="true" />
+        <option name="WATCH_EXIT" value="true" />
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </method_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -87,16 +112,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameModel.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GameModel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="138" column="24" selection-start="3771" selection-end="3771" vertical-scroll-proportion="1.048">
               <folding>
                 <element signature="method#GameModel#0;class#GameModel#0" expanded="false" />
                 <element signature="method#getCurrentPlayer#0;class#GameModel#0" expanded="false" />
-                <element signature="method#getXPlayer#0;class#GameModel#0" expanded="false" />
                 <element signature="method#getOPlayer#0;class#GameModel#0" expanded="false" />
                 <element signature="method#isTurnAvailable#0;class#GameModel#0" expanded="false" />
+                <element signature="method#makeMove#0;class#GameModel#0" expanded="false" />
                 <element signature="method#turnsCount#0;class#GameModel#0" expanded="false" />
                 <element signature="method#getLastTurn#0;class#GameModel#0" expanded="false" />
                 <element signature="method#getTurn#0;class#GameModel#0" expanded="false" />
@@ -116,12 +141,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConsoleView.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ConsoleView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="46" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.37866667">
+            <state line="25" column="45" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="method#showGameField#0;class#ConsoleView#0" expanded="false" />
+                <element signature="method#processInput#0;class#ConsoleView#0" expanded="false" />
+                <element signature="method#processCommand#0;class#ConsoleView#0" expanded="false" />
+                <element signature="method#processCoordinates#0;class#ConsoleView#0" expanded="false" />
                 <element signature="method#start#0;class#ConsoleView#0" expanded="false" />
                 <element signature="method#clearConsole#0;class#ConsoleView#0" expanded="false" />
               </folding>
@@ -132,8 +160,13 @@
       <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="4" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="26" column="33" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#Player#0;class#Player#0" expanded="false" />
+                <element signature="method#setGameModel#0;class#Player#0" expanded="false" />
+                <element signature="method#getSymbolCode#0;class#Player#0" expanded="false" />
+                <element signature="method#getSymbol#0;class#Player#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,8 +174,13 @@
       <file leaf-file-name="NetworkPlayer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/NetworkPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="8" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="45" column="0" selection-start="1552" selection-end="1552" vertical-scroll-proportion="-7.16">
+              <folding>
+                <element signature="method#NetworkPlayer#0;class#NetworkPlayer#0" expanded="false" />
+                <element signature="method#NetworkPlayer#1;class#NetworkPlayer#0" expanded="false" />
+                <element signature="method#send#0;class#NetworkPlayer#0" expanded="false" />
+                <element signature="method#makeMove#0;class#NetworkPlayer#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,8 +188,10 @@
       <file leaf-file-name="Message.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="4" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="26" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,7 +199,7 @@
       <file leaf-file-name="BaseModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/BaseModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -168,9 +208,23 @@
       <file leaf-file-name="ComputerPlayer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/ComputerPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="244" column="8" selection-start="9255" selection-end="9255" vertical-scroll-proportion="0.0">
+            <state line="6" column="5" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0">
               <folding>
+                <element signature="method#makeMove#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryWin#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#checkHorizontalLineForWin#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#checkVerticalLineForWin#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#checkDiagonalsForWin#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryPreventOtherWin#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#checkHorizontalLineForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#checkVerticalLineForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#checkDiagonalsForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryCenter#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryOppositeCorner#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryCorners#0;class#ComputerPlayer#0" expanded="false" />
                 <element signature="method#trySides#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryCell#0;class#ComputerPlayer#0" expanded="false" />
+                <element signature="method#tryAnyEmptyPosition#0;class#ComputerPlayer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -220,12 +274,12 @@
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/View.java" />
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/TicTacToe.java" />
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/RealPlayer.java" />
-        <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java" />
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/ComputerPlayer.java" />
+        <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java" />
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/Player.java" />
+        <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java" />
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/NetworkPlayer.java" />
         <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java" />
-        <option value="$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java" />
       </list>
     </option>
   </component>
@@ -533,7 +587,11 @@
       <created>1376831761023</created>
       <updated>1376831761023</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactoring of process reading data from console.">
+      <created>1376843887537</created>
+      <updated>1376843887537</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -558,17 +616,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298887" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854864" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854864" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.6703448" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -578,7 +637,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -626,7 +684,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring of process reading data from console." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring Message class." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -646,6 +704,7 @@
     <MESSAGE value="Rename discardLastTwoMoves() to discardLastPlayerMove()l." />
     <MESSAGE value="Implemented network game. Other small changes." />
     <MESSAGE value="Refactoring of process reading data from console." />
+    <MESSAGE value="Refactoring Message class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -659,7 +718,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="19" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
           <folding>
+            <element signature="method#makeMove#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkHorizontalLineForWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkVerticalLineForWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkDiagonalsForWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryPreventOtherWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkHorizontalLineForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkVerticalLineForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkDiagonalsForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryCenter#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryOppositeCorner#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryCorners#0;class#ComputerPlayer#0" expanded="false" />
             <element signature="method#trySides#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryCell#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryAnyEmptyPosition#0;class#ComputerPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -695,16 +768,11 @@
         <state line="69" column="57" selection-start="2956" selection-end="2976" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/RealPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_21/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="13" selection-start="513" selection-end="513" vertical-scroll-proportion="0.3315508" />
+        <state line="36" column="13" selection-start="513" selection-end="513" vertical-scroll-proportion="0.3315508">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/TicTacToe.java">
@@ -716,50 +784,97 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="4" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="4" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/NetworkPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="8" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="26" column="33" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#Player#0;class#Player#0" expanded="false" />
+            <element signature="method#setGameModel#0;class#Player#0" expanded="false" />
+            <element signature="method#getSymbolCode#0;class#Player#0" expanded="false" />
+            <element signature="method#getSymbol#0;class#Player#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/ComputerPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="8" selection-start="9255" selection-end="9255" vertical-scroll-proportion="0.0">
+        <state line="6" column="5" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0">
           <folding>
+            <element signature="method#makeMove#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkHorizontalLineForWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkVerticalLineForWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkDiagonalsForWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryPreventOtherWin#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkHorizontalLineForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkVerticalLineForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#checkDiagonalsForPrevent#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryCenter#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryOppositeCorner#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryCorners#0;class#ComputerPlayer#0" expanded="false" />
             <element signature="method#trySides#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryCell#0;class#ComputerPlayer#0" expanded="false" />
+            <element signature="method#tryAnyEmptyPosition#0;class#ComputerPlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="45" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#showGameField#0;class#ConsoleView#0" expanded="false" />
+            <element signature="method#processInput#0;class#ConsoleView#0" expanded="false" />
+            <element signature="method#processCommand#0;class#ConsoleView#0" expanded="false" />
+            <element signature="method#processCoordinates#0;class#ConsoleView#0" expanded="false" />
+            <element signature="method#start#0;class#ConsoleView#0" expanded="false" />
+            <element signature="method#clearConsole#0;class#ConsoleView#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/BaseModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/NetworkPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="0" selection-start="1552" selection-end="1552" vertical-scroll-proportion="-7.16">
+          <folding>
+            <element signature="method#NetworkPlayer#0;class#NetworkPlayer#0" expanded="false" />
+            <element signature="method#NetworkPlayer#1;class#NetworkPlayer#0" expanded="false" />
+            <element signature="method#send#0;class#NetworkPlayer#0" expanded="false" />
+            <element signature="method#makeMove#0;class#NetworkPlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/RealPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/GameModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="138" column="24" selection-start="3771" selection-end="3771" vertical-scroll-proportion="1.048">
           <folding>
             <element signature="method#GameModel#0;class#GameModel#0" expanded="false" />
             <element signature="method#getCurrentPlayer#0;class#GameModel#0" expanded="false" />
-            <element signature="method#getXPlayer#0;class#GameModel#0" expanded="false" />
             <element signature="method#getOPlayer#0;class#GameModel#0" expanded="false" />
             <element signature="method#isTurnAvailable#0;class#GameModel#0" expanded="false" />
+            <element signature="method#makeMove#0;class#GameModel#0" expanded="false" />
             <element signature="method#turnsCount#0;class#GameModel#0" expanded="false" />
             <element signature="method#getLastTurn#0;class#GameModel#0" expanded="false" />
             <element signature="method#getTurn#0;class#GameModel#0" expanded="false" />
@@ -774,17 +889,6 @@
             <element signature="method#canDiscardLastPlayerMove#0;class#GameModel#0" expanded="false" />
             <element signature="method#discardLastPlayerMove#0;class#GameModel#0" expanded="false" />
             <element signature="class#Turn#0;class#GameModel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/ConsoleView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="46" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.37866667">
-          <folding>
-            <element signature="method#showGameField#0;class#ConsoleView#0" expanded="false" />
-            <element signature="method#start#0;class#ConsoleView#0" expanded="false" />
-            <element signature="method#clearConsole#0;class#ConsoleView#0" expanded="false" />
           </folding>
         </state>
       </provider>

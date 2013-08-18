@@ -12,7 +12,6 @@ public class NetworkPlayer extends Player {
     private ObjectInputStream in;
     private ObjectOutputStream out;
     private boolean firstTurn = false;
-    private volatile Socket s;
 
     private NetworkPlayer(int symbol, boolean showInputForm) {
         super(symbol, showInputForm);
@@ -23,7 +22,7 @@ public class NetworkPlayer extends Player {
         switch (type) {
             case SERVER:
                 ServerSocket listener = new ServerSocket(PORT);
-                s = listener.accept();
+                Socket s = listener.accept();
                 in = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
                 out = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
                 out.flush();
@@ -45,12 +44,11 @@ public class NetworkPlayer extends Player {
         out.flush();
     }
 
-
     @Override
-    public void makeTurn() throws IOException {
+    public void makeMove() throws IOException {
         try {
             if (!firstTurn) {
-                send(new Message(Message.NEW_TURN, gm.getLastTurn().getX(), gm.getLastTurn().getY()));
+                send(new Message(Message.NEW_TURN, gm.getLastTurn()));
             } else {
                 firstTurn = false;
             }
@@ -58,7 +56,7 @@ public class NetworkPlayer extends Player {
             Message data = (Message) in.readObject();
             switch (data.getCode()) {
                 case Message.NEW_TURN:
-                    gm.makeTurn(data.getX(), data.getY());
+                    gm.makeMove(data.getTurn().getX(), data.getTurn().getY());
             }
         } catch (IOException e) {
             throw new IOException("Connection lost.");

@@ -43,7 +43,7 @@ public class GameModel extends BaseModel {
         return x >= 0 && x < FIELD_SIZE && y >= 0 && y < FIELD_SIZE && gameField[x][y] == EMPTY;
     }
 
-    public void makeTurn(int x, int y) {
+    public void makeMove(int x, int y) {
         assert turns.size() < FIELD_SIZE * FIELD_SIZE;
 
         gameField[x][y] = getCurrentPlayer().getSymbolCode();
