@@ -40,7 +40,7 @@ public class ConsoleView extends View {
             try {
                 gm.getCurrentPlayer().makeMove();
             } catch (IOException e) {
-                showMessageAndAskForRepeat(e.getMessage());
+                showMessageAndAskForRepeat("Error: " + e.getMessage());
             }
         }
     }
