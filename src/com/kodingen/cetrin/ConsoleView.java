@@ -24,9 +24,11 @@ public class ConsoleView extends View {
         showGameField();
         if (gm.getWinner() != null) {
             System.out.println("Congratulations to Player " + gm.getWinner().getSymbol() + "!");
+            askForRepeat();
             return;
         } else if (!gm.hasMoreTurns()) {
             System.out.println("Draw!");
+            askForRepeat();
             return;
         }
         if (gm.getCurrentPlayer().showInputForm()) {
@@ -38,7 +40,7 @@ public class ConsoleView extends View {
             try {
                 gm.getCurrentPlayer().makeMove();
             } catch (IOException e) {
-                showMessageAndExit(e.getMessage());
+                showMessageAndAskForRepeat(e.getMessage());
             }
         }
     }
@@ -80,7 +82,8 @@ public class ConsoleView extends View {
     private boolean processCommand(String command) {
         if (command.equalsIgnoreCase("q")) {
             gm.unsubscribe(this);
-            System.exit(0);
+            //System.exit(0);
+            askForRepeat();
         }
         if (command.equalsIgnoreCase("u")) {
             if (gm.canDiscardLastPlayerMove()) {
@@ -146,7 +149,7 @@ public class ConsoleView extends View {
                     oPlayer = new NetworkPlayer(GameModel.O, NetworkPlayer.SERVER, null);
                     System.out.println("Connection accepted.");
                 } catch (IOException e) {
-                    showMessageAndExit("Unable to start server.");
+                    showMessageAndAskForRepeat("Unable to start server.");
                 }
                 break;
             case 4:
@@ -158,18 +161,30 @@ public class ConsoleView extends View {
                     xPlayer = new NetworkPlayer(GameModel.X, NetworkPlayer.CLIENT, addr);
                     System.out.println("Connection established.");
                 } catch (IOException e) {
-                    showMessageAndExit("Unable connect to server.");
+                    showMessageAndAskForRepeat("Unable connect to server.");
                 }
                 break;
         }
         GameModel gm = new GameModel(xPlayer, oPlayer);
         gm.subscribe(this);
-
     }
 
-    private void showMessageAndExit(String msg) {
-        System.out.println(msg + " Exiting...");
-        System.exit(0);
+    private void askForRepeat() {
+        System.out.print("Play again?(y/n): ");
+        String answer = in.nextLine();
+        if (answer.equalsIgnoreCase("y")) {
+            start();
+        } else if (answer.equalsIgnoreCase("n")) {
+            System.exit(0);
+        } else {
+            showMessageAndAskForRepeat("Wrong input. Try again.");
+        }
+    }
+
+    private void showMessageAndAskForRepeat(String msg) {
+        System.out.println(msg); // + " Exiting...");
+        //System.exit(0);
+        askForRepeat();
     }
 
     private void clearConsole() {
