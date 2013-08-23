@@ -1,8 +1,14 @@
 package com.kodingen.cetrin;
 
+import com.kodingen.cetrin.controller.GameController;
+import com.kodingen.cetrin.model.GameModel;
+import com.kodingen.cetrin.view.ConsoleView;
+
 public class TicTacToe {
     public static void main(String[] args) {
-        ConsoleView cv = new ConsoleView();
-        cv.start();
+//        ConsoleView cv = new ConsoleView(new GameModel());
+//        cv.start();
+        GameController gc = new GameController(new GameModel(), new ConsoleView());
+        gc.startGame();
     }
 }

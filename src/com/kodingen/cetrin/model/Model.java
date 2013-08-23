@@ -1,9 +1,9 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.model;
 
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class BaseModel {
+public class Model {
     private final Collection<IModelSubscriber> subscribers = new CopyOnWriteArrayList<IModelSubscriber>();
 
     protected void notifySubscribers() {
@@ -14,7 +14,7 @@ public class BaseModel {
 
     private void notifySubscriber(IModelSubscriber subscriber) {
         assert subscriber != null;
-        subscriber.modelChanged(this);
+        subscriber.modelChanged();
     }
 
     public void subscribe(IModelSubscriber subscriber) {

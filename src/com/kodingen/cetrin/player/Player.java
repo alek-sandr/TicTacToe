@@ -1,4 +1,7 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.player;
+
+import com.kodingen.cetrin.model.GameModel;
+import com.kodingen.cetrin.model.Move;
 
 import java.io.IOException;
 
@@ -24,7 +27,7 @@ public abstract class Player {
         return symbol == GameModel.X ? 'X' : 'O';
     }
 
-    public abstract void makeMove() throws IOException;
+    public abstract Move getMove() throws IOException;
 
     public boolean showInputForm() {
         return showInput;

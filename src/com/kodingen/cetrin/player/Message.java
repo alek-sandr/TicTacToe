@@ -1,10 +1,11 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.player;
+
+import com.kodingen.cetrin.model.Move;
 
 import java.io.Serializable;
-import static com.kodingen.cetrin.GameModel.Turn;
 
 class Message implements Serializable {
-    private final Turn turn;
+    private final Move move;
     private final int code;
     public static final int NEW_TURN = 0;
 
@@ -12,16 +13,16 @@ class Message implements Serializable {
         this(code, null);
     }
 
-    Message(int code, Turn turn) {
+    Message(int code, Move move) {
         this.code = code;
-        this.turn = turn;
+        this.move = move;
     }
 
     public int getCode() {
         return code;
     }
 
-    public Turn getTurn() {
-        return turn;
+    public Move getMove() {
+        return move;
     }
 }

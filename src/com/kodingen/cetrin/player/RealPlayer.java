@@ -1,4 +1,6 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.player;
+
+import com.kodingen.cetrin.model.Move;
 
 public class RealPlayer extends Player {
 
@@ -11,7 +13,7 @@ public class RealPlayer extends Player {
     }
 
     @Override
-    public void makeMove() {
-        // do nothing. player enter data to view
+    public Move getMove() {
+        return null;
     }
 }

@@ -1,4 +1,7 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.player;
+
+import com.kodingen.cetrin.model.GameModel;
+import com.kodingen.cetrin.model.Move;
 
 public class ComputerPlayer extends Player {
 
@@ -11,76 +14,94 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public void makeMove() {
-        if (gm.hasWinner()) return;
-        if (!gm.hasMoreTurns()) return;
+    public Move getMove() {
+        if (gm.hasWinner()) return null;
+        if (!gm.hasMoreMoves()) return null;
+        Move move;
         // if we can immediately win we do it
-        if (tryWin()) return;
+        move = tryWin();
+        if (move != null) return move;
         // or try prevent other player to win
-        if (tryPreventOtherWin()) return;
+        move = tryPreventOtherWin();
+        if (move != null) return move;
 
         // Если крестики сделали первый ход в центр, до конца игры ходить в любой угол,
         // а если это невозможно — в любую клетку
-        if (gm.getTurn(0).isCenterTurn()) {
-            if (tryCorners()) return;
-            if (tryAnyEmptyPosition()) return;
+        if (gm.getMove(0).isCenterMove()) {
+            move = tryCorners();
+            if (move != null) return move;
+            move = tryAnyEmptyPosition();
+            if (move != null) return move;
         }
+
         // Если крестики сделали первый ход в угол, ответить ходом в центр.
         // Следующим ходом занять угол, противоположный первому ходу крестиков, а если это невозможно — пойти на сторону.
-        if (gm.getTurn(0).isCornerTurn()) {
-            if (tryCenter()) return;
-            if (gm.turnsCount() == 3) {
-                if (tryOppositeCorner(gm.getTurn(0), gm)) return;
-                if (trySides()) return;
+        if (gm.getMove(0).isCornerMove()) {
+            move = tryCenter();
+            if (move != null) return move;
+            if (gm.movesCount() == 3) {
+                move = tryOppositeCorner(gm.getMove(0), gm);
+                if (move != null) return move;
+                move = trySides();
+                if (move != null) return move;
             }
         }
 
-        if (gm.turnsCount() <= 3 && gm.getTurn(0).isSideTurn()) {
+
+        // Если первый ход на сторону
+        if (gm.movesCount() <= 3 && gm.getMove(0).isSideMove()) {
             // Если крестики сделали первый ход на сторону, ответить ходом в центр
-            if (tryCenter()) return;
+            move = tryCenter();
+            if (move != null) return null;
             // Если следующий ход крестиков — в угол, занять противоположный угол
-            if (gm.turnsCount() == 3 && gm.getTurn(2).isCornerTurn()) {
-                if (tryOppositeCorner(gm.getTurn(2), gm)) return;
+            if (gm.movesCount() == 3 && gm.getMove(2).isCornerMove()) {
+                move = tryOppositeCorner(gm.getMove(2), gm);
+                if (move != null) return move;
             }
             // Если следующий ход крестиков — на противоположную сторону, пойти в любой угол
-            if (gm.turnsCount() == 3) {
-                if (Math.abs(gm.getLastTurn().getX() - gm.getFieldSize() + 1) == gm.getTurn(0).getX() &&
-                        Math.abs(gm.getLastTurn().getY() - gm.getFieldSize() + 1) == gm.getTurn(0).getY()) {
-                    if (tryCorners()) return;
+            if (gm.movesCount() == 3) {
+                if (Math.abs(gm.getLastMove().getX() - gm.getFieldSize() + 1) == gm.getMove(0).getX() &&
+                        Math.abs(gm.getLastMove().getY() - gm.getFieldSize() + 1) == gm.getMove(0).getY()) {
+                    move = tryCorners();
+                    if (move != null) return move;
                 }
             }
             // Если следующий ход крестиков — на сторону рядом с их первым ходом,
             // пойти в угол рядом с обоими крестиками
-            if (gm.turnsCount() == 3 && gm.getLastTurn().isSideTurn() &&
-                    gm.getTurn(0).getX() != gm.getLastTurn().getX() && gm.getTurn(0).getY() != gm.getLastTurn().getY()) {
+            if (gm.movesCount() == 3 && gm.getLastMove().isSideMove() &&
+                    gm.getMove(0).getX() != gm.getLastMove().getX() && gm.getMove(0).getY() != gm.getLastMove().getY()) {
                 int x = 0, y = 0;
-                if (gm.getTurn(0).getX() == 0 || gm.getTurn(0).getX() == gm.getFieldSize() - 1) {
-                    x = gm.getTurn(0).getX();
-                } else if (gm.getLastTurn().getX() == 0 || gm.getLastTurn().getX() == gm.getFieldSize() - 1) {
-                    x = gm.getLastTurn().getX();
+                if (gm.getMove(0).getX() == 0 || gm.getMove(0).getX() == gm.getFieldSize() - 1) {
+                    x = gm.getMove(0).getX();
+                } else if (gm.getLastMove().getX() == 0 || gm.getLastMove().getX() == gm.getFieldSize() - 1) {
+                    x = gm.getLastMove().getX();
                 }
-                if (gm.getTurn(0).getY() == 0 || gm.getTurn(0).getY() == gm.getFieldSize() - 1) {
-                    y = gm.getTurn(0).getY();
-                } else if (gm.getLastTurn().getY() == 0 || gm.getLastTurn().getY() == gm.getFieldSize() - 1) {
-                    y = gm.getLastTurn().getY();
+                if (gm.getMove(0).getY() == 0 || gm.getMove(0).getY() == gm.getFieldSize() - 1) {
+                    y = gm.getMove(0).getY();
+                } else if (gm.getLastMove().getY() == 0 || gm.getLastMove().getY() == gm.getFieldSize() - 1) {
+                    y = gm.getLastMove().getY();
                 }
-                if (tryCell(x, y)) return;
+                move = tryCell(x, y);
+                if (move != null) return move;
             }
         }
 
         // go to any empty position
-        tryAnyEmptyPosition();
+        return tryAnyEmptyPosition();
     }
 
-    private boolean tryWin() {
+    private Move tryWin() {
+        Move move;
         for (int i = 0; i < gm.getFieldSize(); i++) {
-            if (checkHorizontalLineForWin(i)) return true;
-            if (checkVerticalLineForWin(i)) return true;
+            move = checkHorizontalLineForWin(i);
+            if (move != null) return move;
+            move = checkVerticalLineForWin(i);
+            if (move != null) return move;
         }
         return checkDiagonalsForWin();
     }
 
-    private boolean checkHorizontalLineForWin(int row) {
+    private Move checkHorizontalLineForWin(int row) {
         int myCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -91,13 +112,12 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(emptyCellNumber, row);
-            return true;
+            return new Move(emptyCellNumber, row);
         }
-        return false;
+        return null;
     }
 
-    private boolean checkVerticalLineForWin(int column) {
+    private Move checkVerticalLineForWin(int column) {
         int myCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -108,13 +128,12 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(column, emptyCellNumber);
-            return true;
+            return new Move(column, emptyCellNumber);
         }
-        return false;
+        return null;
     }
 
-    private boolean checkDiagonalsForWin() {
+    private Move checkDiagonalsForWin() {
         int myCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -125,8 +144,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(emptyCellNumber, emptyCellNumber);
-            return true;
+            return new Move(emptyCellNumber, emptyCellNumber);
         }
         myCellsCount = 0;
         emptyCellNumber = -1;
@@ -138,21 +156,23 @@ public class ComputerPlayer extends Player {
             }
         }
         if (myCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
-            return true;
+            return new Move(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
         }
-        return false;
+        return null;
     }
 
-    private boolean tryPreventOtherWin() {
+    private Move tryPreventOtherWin() {
+        Move move;
         for (int i = 0; i < gm.getFieldSize(); i++) {
-            if (checkHorizontalLineForPrevent(i)) return true;
-            if (checkVerticalLineForPrevent(i)) return true;
+            move = checkHorizontalLineForPrevent(i);
+            if (move != null) return move;
+            move = checkVerticalLineForPrevent(i);
+            if (move != null) return move;
         }
         return checkDiagonalsForPrevent();
     }
 
-    private boolean checkHorizontalLineForPrevent(int row) {
+    private Move checkHorizontalLineForPrevent(int row) {
         int oppositeCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -163,13 +183,12 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(emptyCellNumber, row);
-            return true;
+            return new Move(emptyCellNumber, row);
         }
-        return false;
+        return null;
     }
 
-    private boolean checkVerticalLineForPrevent(int column) {
+    private Move checkVerticalLineForPrevent(int column) {
         int oppositeCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -180,13 +199,12 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(column, emptyCellNumber);
-            return true;
+            return new Move(column, emptyCellNumber);
         }
-        return false;
+        return null;
     }
 
-    private boolean checkDiagonalsForPrevent() {
+    private Move checkDiagonalsForPrevent() {
         int oppositeCellsCount = 0;
         int emptyCellNumber = -1;
         for (int i = 0; i < gm.getFieldSize(); i++) {
@@ -197,8 +215,7 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(emptyCellNumber, emptyCellNumber);
-            return true;
+            return new Move(emptyCellNumber, emptyCellNumber);
         }
         oppositeCellsCount = 0;
         emptyCellNumber = -1;
@@ -210,75 +227,77 @@ public class ComputerPlayer extends Player {
             }
         }
         if (oppositeCellsCount == 2 && emptyCellNumber != -1) {
-            gm.makeMove(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
-            return true;
+            return new Move(emptyCellNumber, gm.getFieldSize() - 1 - emptyCellNumber);
         }
-        return false;
+        return null;
     }
 
-    private boolean tryCenter() {
+    private Move tryCenter() {
         int centerPosition = gm.getFieldSize() / 2;
-        if (gm.getFieldCell(centerPosition, centerPosition) == 0) {
-            gm.makeMove(centerPosition, centerPosition);
-            return true;
+        if (gm.getFieldCell(centerPosition, centerPosition) == GameModel.EMPTY) {
+            return new Move(centerPosition, centerPosition);
         }
-        return false;
+        return null;
     }
 
-    private boolean tryOppositeCorner(GameModel.Turn turn, GameModel gm) {
-        if (turn.isCornerTurn()) {
-            if (tryCell(Math.abs(turn.getX() - gm.getFieldSize() + 1),
-                    Math.abs(turn.getY() - gm.getFieldSize() + 1))) {
-                return true;
-            }
+    private Move tryOppositeCorner(Move move, GameModel gm) {
+        if (move.isCornerMove()) {
+            return tryCell(Math.abs(move.getX() - gm.getFieldSize() + 1),
+                    Math.abs(move.getY() - gm.getFieldSize() + 1));
         }
-        return false;
+        return null;
     }
 
-    private boolean tryCorners() {
-        if (tryCell(0, 0)) {
-            return true;
+    private Move tryCorners() {
+        Move move;
+        move = tryCell(0, 0);
+        if (move != null) {
+            return move;
         }
-        if (tryCell(0, gm.getFieldSize() - 1)) {
-            return true;
+        move = tryCell(0, gm.getFieldSize() - 1);
+        if (move != null) {
+            return move;
         }
-        if (tryCell(gm.getFieldSize() - 1, 0)) {
-            return true;
+        move = tryCell(gm.getFieldSize() - 1, 0);
+        if (move != null) {
+            return move;
         }
         return tryCell(gm.getFieldSize() - 1, gm.getFieldSize() - 1);
     }
 
-    private boolean trySides() {
-        if (tryCell(gm.getFieldSize() / 2, 0)) {
-            return true;
+    private Move trySides() {
+        Move move;
+        move = tryCell(gm.getFieldSize() / 2, 0);
+        if (move != null) {
+            return move;
         }
-        if (tryCell(gm.getFieldSize() - 1, gm.getFieldSize() / 2)) {
-            return true;
+        move = tryCell(gm.getFieldSize() - 1, gm.getFieldSize() / 2);
+        if (move != null) {
+            return move;
         }
-        if (tryCell(0, gm.getFieldSize() / 2)) {
-            return true;
+        move = tryCell(0, gm.getFieldSize() / 2);
+        if (move != null) {
+            return move;
         }
         return tryCell(gm.getFieldSize() / 2, gm.getFieldSize() - 1);
     }
 
-    private boolean tryCell(int x, int y) {
-        if (gm.getFieldCell(x, y) == 0) {
-            gm.makeMove(x, y);
-            return true;
+    private Move tryCell(int x, int y) {
+        if (gm.getFieldCell(x, y) == GameModel.EMPTY) {
+            return new Move(x, y);
         }
-        return false;
+        return null;
     }
 
-    private boolean tryAnyEmptyPosition() {
+    private Move tryAnyEmptyPosition() {
         for (int x = 0; x < gm.getFieldSize(); x++) {
             for (int y = 0; y < gm.getFieldSize(); y++) {
-                if (gm.getFieldCell(x, y) == 0) {
-                    gm.makeMove(x, y);
-                    return true;
+                if (gm.getFieldCell(x, y) == GameModel.EMPTY) {
+                    return new Move(x, y);
                 }
             }
         }
-        return false;
+        return null;
     }
 
 }

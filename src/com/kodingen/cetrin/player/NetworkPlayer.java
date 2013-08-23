@@ -1,6 +1,12 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.player;
 
-import java.io.*;
+import com.kodingen.cetrin.model.Move;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,12 +19,8 @@ public class NetworkPlayer extends Player {
     private ObjectOutputStream out;
     private boolean firstTurn = false;
 
-    private NetworkPlayer(int symbol, boolean showInputForm) {
-        super(symbol, showInputForm);
-    }
-
     public NetworkPlayer(int symbol, int type, String addr) throws IOException {
-        this(symbol, false);
+        super(symbol, false);
         switch (type) {
             case SERVER:
                 ServerSocket listener = new ServerSocket(PORT);
@@ -45,23 +47,24 @@ public class NetworkPlayer extends Player {
     }
 
     @Override
-    public void makeMove() throws IOException {
+    public Move getMove() throws IOException {
         try {
-            if (!firstTurn) {
-                send(new Message(Message.NEW_TURN, gm.getLastTurn()));
+            if (!firstTurn) { // nothing to send, only receive move on first turn
+                send(new Message(Message.NEW_TURN, gm.getLastMove()));
             } else {
                 firstTurn = false;
             }
-            if (gm.hasWinner()) return;
+            if (gm.hasWinner()) return null;
             Message data = (Message) in.readObject();
             switch (data.getCode()) {
                 case Message.NEW_TURN:
-                    gm.makeMove(data.getTurn().getX(), data.getTurn().getY());
+                    return new Move(data.getMove().getX(), data.getMove().getY());
             }
         } catch (IOException e) {
             throw new IOException("Connection lost.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

@@ -1,22 +1,27 @@
-package com.kodingen.cetrin;
+package com.kodingen.cetrin.model;
 
-import java.io.Serializable;
+import com.kodingen.cetrin.player.ComputerPlayer;
+import com.kodingen.cetrin.player.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameModel extends BaseModel {
-    private static final byte FIELD_SIZE = 3;
+public class GameModel extends Model {
+    public static final int FIELD_SIZE = 3;
     public static final int X = 1, O = -1, EMPTY = 0;
 
     private int[][] gameField = new int[FIELD_SIZE][FIELD_SIZE];
-    private List<Turn> turns = new ArrayList<Turn>(FIELD_SIZE * FIELD_SIZE);
-    private final Player xPlayer;
-    private final Player oPlayer;
+    private List<Move> moves = new ArrayList<Move>(FIELD_SIZE * FIELD_SIZE);
+    private Player xPlayer;
+    private Player oPlayer;
     private Player currentPlayer;
     private Player winner;
     private boolean canUndo = false;
 
-    public GameModel(Player xPlayer, Player oPlayer) {
+    public GameModel() {
+    }
+
+    public void setPlayers(Player xPlayer, Player oPlayer) {
         this.xPlayer = xPlayer;
         this.oPlayer = oPlayer;
         this.xPlayer.setGameModel(this);
@@ -27,7 +32,21 @@ public class GameModel extends BaseModel {
         currentPlayer = xPlayer;
     }
 
-    Player getCurrentPlayer() {
+    public void clear() {
+        xPlayer = null;
+        oPlayer = null;
+        currentPlayer = null;
+        winner = null;
+        moves.clear();
+        canUndo = false;
+        for (int x = 0; x < FIELD_SIZE; x++) {
+            for (int y = 0; y < FIELD_SIZE; y++) {
+                gameField[x][y] = EMPTY;
+            }
+        }
+    }
+
+    public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
@@ -39,30 +58,30 @@ public class GameModel extends BaseModel {
         return oPlayer;
     }
 
-    public boolean isTurnAvailable(int x, int y) {
+    public boolean isMoveAvailable(int x, int y) {
         return x >= 0 && x < FIELD_SIZE && y >= 0 && y < FIELD_SIZE && gameField[x][y] == EMPTY;
     }
 
     public void makeMove(int x, int y) {
-        assert turns.size() < FIELD_SIZE * FIELD_SIZE;
+        assert moves.size() < FIELD_SIZE * FIELD_SIZE;
 
         gameField[x][y] = getCurrentPlayer().getSymbolCode();
-        turns.add(new Turn(x, y));
+        moves.add(new Move(x, y));
         checkWinner();
         currentPlayer = currentPlayer == xPlayer ? oPlayer : xPlayer;
         notifySubscribers();
     }
 
-    int turnsCount() {
-        return turns.size();
+    public int movesCount() {
+        return moves.size();
     }
 
-    Turn getLastTurn() {
-        return turns.get(turns.size() - 1);
+    public Move getLastMove() {
+        return moves.get(moves.size() - 1);
     }
 
-    Turn getTurn(int index) {
-        return turns.get(index);
+    public Move getMove(int index) {
+        return moves.get(index);
     }
 
     private void checkWinner() {
@@ -119,8 +138,8 @@ public class GameModel extends BaseModel {
         return winner != null;
     }
 
-    public boolean hasMoreTurns() {
-        return turns.size() < FIELD_SIZE * FIELD_SIZE;
+    public boolean hasMoreMoves() {
+        return moves.size() < FIELD_SIZE * FIELD_SIZE;
     }
 
     public int getFieldCell(int x, int y) {
@@ -141,49 +160,16 @@ public class GameModel extends BaseModel {
     }
 
     public boolean canDiscardLastPlayerMove() {
-        return turnsCount() >= 2 && canUndo;
+        return movesCount() >= 2 && canUndo;
     }
 
     public void discardLastPlayerMove() {
         if (canDiscardLastPlayerMove()) {
-            Turn t = turns.remove(turnsCount() - 1);
+            Move t = moves.remove(movesCount() - 1);
             gameField[t.getX()][t.getY()] = EMPTY;
-            t = turns.remove(turnsCount() - 1);
+            t = moves.remove(movesCount() - 1);
             gameField[t.getX()][t.getY()] = EMPTY;
             notifySubscribers();
         }
     }
-
-    static class Turn implements Serializable {
-        private int x, y;
-
-        Turn(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        int getX() {
-            return x;
-        }
-
-        int getY() {
-            return y;
-        }
-        boolean isCenterTurn() {
-            return x == FIELD_SIZE / 2 && y == FIELD_SIZE / 2;
-        }
-        boolean isCornerTurn() {
-            return (x == 0 && y == 0) ||
-                    (x == 0 && y == FIELD_SIZE - 1) ||
-                    (x == FIELD_SIZE - 1 && y == 0) ||
-                    (x == FIELD_SIZE - 1 && y == FIELD_SIZE - 1);
-        }
-        boolean isSideTurn() {
-            return (x == FIELD_SIZE / 2 && y == 0) ||
-                    (x == 0 && y == FIELD_SIZE / 2) ||
-                    (x == FIELD_SIZE - 1 && y == FIELD_SIZE / 2) ||
-                    (x == FIELD_SIZE / 2 && y == FIELD_SIZE - 1);
-        }
-    }
-
 }
