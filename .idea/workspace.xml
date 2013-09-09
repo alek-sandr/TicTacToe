@@ -7,22 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/controller/Command.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/controller/GameController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/controller/IController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/model/IModelSubscriber.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/view/View.java" />
-      <change type="DELETED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\IModelSubscriber.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\View.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\BaseModel.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/model/Model.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\ComputerPlayer.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/player/ComputerPlayer.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\ConsoleView.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/view/ConsoleView.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\GameModel.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/model/GameModel.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\Message.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/player/Message.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\NetworkPlayer.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/player/NetworkPlayer.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\Player.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/player/Player.java" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\shetkin\IdeaProjects\TicTacToe\src\com\kodingen\cetrin\RealPlayer.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/player/RealPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kodingen/cetrin/TicTacToe.java" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/TicTacToe.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/kodingen/cetrin/model/Move.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TicTacToe.iws" />
@@ -40,7 +25,7 @@
     <file path="/NetworkPlayer.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377263839027" ignored="false" />
     <file path="/TicTacToe.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377264235556" ignored="false" />
     <file path="/fragment.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377176905499" ignored="false" />
-    <file path="/Dummy.txt" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377264937500" ignored="false" />
+    <file path="/Dummy.txt" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1378714735388" ignored="false" />
     <file path="/Message.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377002343854" ignored="false" />
     <file path="/IController.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377178613134" ignored="false" />
     <file path="/Command.java" changelist="a78f6ebd-cc4d-4097-b4c0-d6ad3e5e153e" time="1377262160062" ignored="false" />
@@ -136,10 +121,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="28" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.62634987">
+            <state line="84" column="28" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Move.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/model/Move.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="11" selection-start="727" selection-end="727" vertical-scroll-proportion="0.521645">
               <folding />
             </state>
           </provider>
@@ -149,9 +143,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/view/View.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="14" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -246,6 +238,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -408,7 +401,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -424,12 +416,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveMembersDialog.RECENTS_KEY">
@@ -467,19 +459,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -505,6 +484,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -614,7 +606,11 @@
       <created>1376923287439</created>
       <updated>1376923287439</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Big refactoring. Added controller.">
+      <created>1377264997533</created>
+      <updated>1377264997533</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -641,7 +637,7 @@
     <frame x="-4" y="-4" width="1448" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -651,16 +647,16 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32737276" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.6703448" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.6726272" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.6712517" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32689655" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827586" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -737,6 +733,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/controller/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="40" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/model/IModelSubscriber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="76" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
@@ -761,13 +764,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="32" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/model/Move.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="11" selection-start="727" selection-end="727" vertical-scroll-proportion="0.72713864">
           <folding />
         </state>
       </provider>
@@ -807,9 +803,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -843,7 +837,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/controller/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="28" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.62634987">
+        <state line="84" column="28" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kodingen/cetrin/model/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="11" selection-start="727" selection-end="727" vertical-scroll-proportion="0.521645">
           <folding />
         </state>
       </provider>
