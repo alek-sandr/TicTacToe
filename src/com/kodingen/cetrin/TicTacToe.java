@@ -6,8 +6,6 @@ import com.kodingen.cetrin.view.ConsoleView;
 
 public class TicTacToe {
     public static void main(String[] args) {
-//        ConsoleView cv = new ConsoleView(new GameModel());
-//        cv.start();
         GameController gc = new GameController(new GameModel(), new ConsoleView());
         gc.startGame();
     }

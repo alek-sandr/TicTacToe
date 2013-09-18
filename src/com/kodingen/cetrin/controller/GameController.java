@@ -58,7 +58,7 @@ public class GameController implements IController {
             gm.discardLastPlayerMove();
         } else {
             view.showMessage("Unavailable command. Try again.");
-            view.showPlayerInputForm();
+            view.askPlayerForMove();
         }
     }
 
@@ -66,7 +66,7 @@ public class GameController implements IController {
         Move move = null;
         if (gm.getCurrentPlayer().showInputForm()) {
             if (data == null) {
-                view.showPlayerInputForm();
+                view.askPlayerForMove();
                 return;
             }
             if (data.getClass() != Move.class) {
@@ -87,7 +87,7 @@ public class GameController implements IController {
             gm.makeMove(move.getX(), move.getY());
         } else {
             view.showMessage("Wrong coordinates. Try again.");
-            view.showPlayerInputForm();
+            view.askPlayerForMove();
         }
     }
 

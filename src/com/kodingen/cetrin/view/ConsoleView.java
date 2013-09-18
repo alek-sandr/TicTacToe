@@ -17,38 +17,49 @@ public class ConsoleView extends View {
     private Scanner in;
 
     public ConsoleView() {
-        //this.gm = gm;
-        //controller = new GameController(gm, this);
         in = new Scanner(System.in);
     }
 
+    /**
+     * Update view on changing game state
+     */
     public void modelChanged() {
         clearConsole();
         showGameField();
-        if (gm.getWinner() != null) {
+        if (gm.getWinner() != null) { // have a winner
             System.out.println("Congratulations to Player " + gm.getWinner().getSymbol() + "!");
             controller.execute(Command.END_GAME, null);
             return;
-        } else if (!gm.hasMoreMoves()) {
+        } else if (!gm.hasMoreMoves()) { // draw
             System.out.println("Draw!");
             controller.execute(Command.END_GAME, null);
             return;
         }
-        controller.execute(Command.MOVE, null);
+        controller.execute(Command.MOVE, null); // next move
     }
 
+    /**
+     * Ask player to make move
+     */
     @Override
-    public void showPlayerInputForm() {
+    public void askPlayerForMove() {
         System.out.print("Player " + gm.getCurrentPlayer().getSymbol() + " turn (row column): ");
         String[] input = in.nextLine().trim().split(" ");
         processInput(input);
     }
 
+    /**
+     * Print message to console
+     * @param message Message text
+     */
     @Override
     public void showMessage(String message) {
         System.out.println(message);
     }
 
+    /**
+     * Shows game board and info
+     */
     private void showGameField() {
         //StringBuilder sb = new StringBuilder("*** TicTacToe Game ***\n   0  1  2\n");
         StringBuilder sb = new StringBuilder();
@@ -70,33 +81,45 @@ public class ConsoleView extends View {
         System.out.println("q - to quit; u - to undo last move in game with computer\n");
     }
 
+    /**
+     * Process data entered by player
+     * @param input Player input
+     */
     private void processInput(String[] input) {
-//        System.out.print("Player " + gm.getCurrentPlayer().getSymbol() + " turn (row column): ");
-//        String[] input = in.nextLine().trim().split(" ");
         switch (input.length) {
-            case 1:
+            case 1: // try process input as command
                 processCommand(input[0]);
-            case 2:
+                break;
+            case 2: // try process input as coordinates
                 processCoordinates(input);
-            default:
+                break;
+            default: // wrong number of input parameters
                 showMessage("Wrong number of parameters. Try again.");
-                showPlayerInputForm();
+                askPlayerForMove();
         }
     }
 
-    private boolean processCommand(String command) {
+    /**
+     * Try process input string as command and ask for new input if fails
+     * @param command String command
+     */
+    private void processCommand(String command) {
         if (command.equalsIgnoreCase("q")) {
             controller.execute(Command.QUIT, null);
-            return true;
+            return;
         }
         if (command.equalsIgnoreCase("u")) {
             controller.execute(Command.UNDO, null);
-            return true;
+            return;
         }
         System.out.println("No such command.");
-        return false;
+        askPlayerForMove();
     }
 
+    /**
+     * Try process input array as coordinates. Ask for new input if fails
+     * @param input String array with coordinates
+     */
     private void processCoordinates(String[] input) {
         assert input.length == 2;
         int x, y;
@@ -104,20 +127,22 @@ public class ConsoleView extends View {
             x = Integer.parseInt(input[0]);
             y = Integer.parseInt(input[1]);
             if (gm.isMoveAvailable(x, y)) {
-//                gm.makeMove(x, y);
                 controller.execute(Command.MOVE, new Move(x, y));
             } else {
                 showMessage("Wrong coordinates or this cell already occupied.");
-                showPlayerInputForm();
+                askPlayerForMove();
             }
         } catch (NumberFormatException nfe) {
             showMessage("Entered coordinates are not integer numbers.");
-            showPlayerInputForm();
+            askPlayerForMove();
         }
     }
 
+    /**
+     * Ask for new game type and start new game
+     */
     public void start() {
-        System.out.println("Starting new game.\nSelect game type.");
+        System.out.println("New game.\nSelect game type.");
         System.out.println("1) Real player - Real player");
         System.out.println("2) Real player - Computer");
         System.out.println("3) Create network game");
@@ -132,12 +157,20 @@ public class ConsoleView extends View {
         controller.execute(Command.NEW_GAME, gameType);
     }
 
+    /**
+     * Show message and read player input
+     * @param message Message to show
+     * @return Player input
+     */
     @Override
     public String askForInput(String message) {
         System.out.print(message);
         return in.nextLine();
     }
 
+    /**
+     * Ask player for repeat game
+     */
     @Override
     public void askForRepeat() {
         System.out.print("Play again?(y/n): ");
@@ -152,6 +185,9 @@ public class ConsoleView extends View {
         }
     }
 
+    /**
+     * Try to clear console
+     */
     private void clearConsole() {
         try {
             String os = System.getProperty("os.name");
