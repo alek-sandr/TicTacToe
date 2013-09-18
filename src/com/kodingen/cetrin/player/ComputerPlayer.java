@@ -52,7 +52,7 @@ public class ComputerPlayer extends Player {
         if (gm.movesCount() <= 3 && gm.getMove(0).isSideMove()) {
             // Если крестики сделали первый ход на сторону, ответить ходом в центр
             move = tryCenter();
-            if (move != null) return null;
+            if (move != null) return move;
             // Если следующий ход крестиков — в угол, занять противоположный угол
             if (gm.movesCount() == 3 && gm.getMove(2).isCornerMove()) {
                 move = tryOppositeCorner(gm.getMove(2), gm);
