@@ -157,6 +157,7 @@ public class GameController implements IController {
     }
 
     private void endGame() {
+        view.askForGamelog();
         gm.unsubscribe(view);
         view.askForRepeat();
     }

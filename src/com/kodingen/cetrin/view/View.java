@@ -60,4 +60,9 @@ public abstract class View implements IModelSubscriber {
      */
     @Override
     public abstract void modelChanged();
+
+    /**
+     * Ask player for show moves log
+     */
+    public abstract void askForGamelog();
 }

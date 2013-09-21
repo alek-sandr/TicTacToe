@@ -27,15 +27,41 @@ public class ConsoleView extends View {
         clearConsole();
         showGameField();
         if (gm.getWinner() != null) { // have a winner
-            System.out.println("Congratulations to Player " + gm.getWinner().getSymbol() + "!");
+            showMessage("Congratulations to Player " + gm.getWinner().getSymbol() + "!");
             controller.execute(Command.END_GAME, null);
             return;
         } else if (!gm.hasMoreMoves()) { // draw
-            System.out.println("Draw!");
+            showMessage("Draw!");
             controller.execute(Command.END_GAME, null);
             return;
         }
         controller.execute(Command.MOVE, null); // next move
+    }
+
+    /**
+     * Ask player for show moves log
+     */
+    @Override
+    public void askForGamelog() {
+        System.out.print("Show moves log?(y/n): ");
+        String answer = in.nextLine();
+        if (answer.equalsIgnoreCase("y")) {
+            showGameLog();
+        } else if (!answer.equalsIgnoreCase("n")) {
+            showMessage("Wrong input. Try again.");
+            askForGamelog();
+        }
+    }
+
+    private void showGameLog() {
+        int moves = gm.movesCount();
+        Move move;
+        char currentPlayerChar = 'X'; // X moves always first
+        for (int i = 0; i < moves; i++) {
+            move = gm.getMove(i);
+            System.out.println("Player " + currentPlayerChar + " move: " + move.getX() + " " + move.getY());
+            currentPlayerChar = currentPlayerChar == 'X' ? 'Y' : 'X';
+        }
     }
 
     /**
